@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$TIME – The Time Coin</title>
+  <style>
+    /* --- Reset --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e);
+      overflow-x: hidden;
+    }
+
+    /* --- Background stars --- */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 100s linear infinite;
+      z-index: -2;
+    }
+    @keyframes moveStars {
+      from {background-position: 0 0;}
+      to {background-position: 10000px 10000px;}
+    }
+
+    /* --- Hero Section --- */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 5rem;
+      color: #fff;
+      text-shadow: 0 0 20px #8e2de2, 0 0 40px #4a00e0;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 20px #8e2de2; }
+      to { text-shadow: 0 0 40px #4a00e0, 0 0 60px #8e2de2; }
+    }
+    header p {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      opacity: 0.8;
+    }
+    .btn {
+      background: linear-gradient(90deg, #8e2de2, #4a00e0);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #4a00e0;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #8e2de2, 0 0 60px #4a00e0;
+    }
+
+    /* --- Sections --- */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 2;
+    }
+    section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #8e2de2;
+    }
+    section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* --- Parallax elements --- */
+    .parallax {
+      position: absolute;
+      top: 20%;
+      width: 100px;
+      opacity: 0.6;
+      z-index: 1;
+    }
+    .clock { left: 5%; animation: float 6s ease-in-out infinite; }
+    .arrow { right: 10%; animation: float 8s ease-in-out infinite; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- Hero -->
+  <header>
+    <h1>$TIME ⏳</h1>
+    <p>The only coin you can’t print</p>
+    <a href="#" class="btn">Buy $TIME</a>
+    <img src="https://img.icons8.com/ios-filled/100/ffffff/clock.png" class="parallax clock" />
+    <img src="https://img.icons8.com/ios-filled/100/ffffff/up.png" class="parallax arrow" />
+  </header>
+
+  <!-- About -->
+  <section>
+    <h2>About $TIME</h2>
+    <p>
+      $TIME is the first meme + utility coin backed by the only truly scarce resource: time itself. 
+      Don’t waste it. Stack it. Spend it wisely.
+    </p>
+  </section>
+
+  <!-- Tokenomics -->
+  <section>
+    <h2>Tokenomics</h2>
+    <p><strong>Genesis Supply:</strong> 1,440,000 $TIME (1 year in minutes)</p>
+    <p><strong>Emission:</strong> 1 $TIME per minute (capped at 100M)</p>
+    <p><strong>Fees:</strong> 1% transaction fee → Time Treasury</p>
+  </section>
+
+  <!-- Community -->
+  <section>
+    <h2>Join the Community</h2>
+    <p>
+      Follow us on <a href="#" style="color:#8e2de2;">Twitter</a>, 
+      <a href="#" style="color:#8e2de2;">Telegram</a>, and 
+      <a href="#" style="color:#8e2de2;">Discord</a>!
+    </p>
+  </section>
+
+  <footer>
+    ⚠️ This is a meme project. Not financial advice. – $TIME
+  </footer>
+
+  <script>
+    // Parallax effect
+    document.addEventListener("mousemove", (e) => {
+      document.querySelectorAll(".parallax").forEach((el) => {
+        const speed = el.classList.contains("clock") ? 0.05 : 0.08;
+        const x = (window.innerWidth - e.pageX * speed);
+        const y = (window.innerHeight - e.pageY * speed);
+        el.style.transform = `translate(${x/100}px, ${y/100}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
